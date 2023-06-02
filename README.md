@@ -1,5 +1,28 @@
 # RemoteCalldB
-This is an Express 3 project which utilises Better-SQLite to store information about callers. It is the server for the digital-first client application.
-You can install Express using npm and accept the better-sqlite addon. The database is the RemoteCallCentre.db. 
+This is the database server to be used with the Digital First Remote Consultation project.
+
+It utilises Express and better-sqlite3 to store information about callers and sites being serviced. 
+
+### Windows Installation
+You can install Express using npm and accept the better-sqlite addon. 
+
+The database is the RemoteCallCentre.db. 
+
 It requires node.js but installs if necessary.
+
 Launch with "node index.js"
+
+### Installation on Linux
+Check that you have npm - Node Package Manager.
+
+Install Express and better-sqlite3 from a terminal with 
+```bash
+npm install express better-sqlite3
+```
+Launch the DB with 
+```bash
+node index.js
+```
+This will create a webserver for the Database listening on localhost:3000
+
+The Digital First app will look at this address for managing and querying data 
