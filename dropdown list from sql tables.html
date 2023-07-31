@@ -1,0 +1,54 @@
+Am trying to get data from an sqlite database table to feed to my dropdown menu list. See my thinking below. The problem is I don’t know how to marry the JS function with the HTML part.
+
+
+HTML.html
+Expand|Select|Wrap|Line Numbers
+ 
+        <label for="name"><b>Activity Name:/b></label>          
+        <select name="activity" id="activity" required>
+                        <option value="">--Select--</option>
+                        getActivity()
+                         </select>
+
+JS.js
+
+
+Expand|Select|Wrap|Line Numbers
+        function getActivity(tx) {
+                tx.executeSql('SELECT * FROM tblactivity', [], queryActivity, errorHandler);
+                    function queryActivity(tx, results) {
+                var len = results.rows.length;
+                for (var i = 0; i < len; i++) {
+                   var SelectActivity +='<option value="' + results.rows.item(i).activityID +'">'+ results.rows.item(i).ActivityName +'</Option>';
+                }
+                //SelectActivity +="</Option";
+                document.getElementById("activity").innerHTML =SelectActivity;
+            }}
+
+
+Alternatively on HTML.html, incorporating the Function like
+
+Expand|Select|Wrap|Line Numbers
+ 
+        <label for="name"><b>Activity Name:/b></label>          
+        <select name="activity" id="activity" required>
+        <script>
+            function getActivity(tx) {
+                tx.executeSql('SELECT * FROM tblactivity', [], queryActivity, errorHandler);
+                    function queryActivity(tx, results) {
+                var len = results.rows.length;
+                for (var i = 0; i < len; i++) {
+                   var SelectActivity +='<option value="' + results.rows.item(i).activityID +'">'+ results.rows.item(i).ActivityName +'</Option>';
+                }
+                //SelectActivity +="</Option";
+                document.getElementById("activity").innerHTML =SelectActivity;
+            }}
+        </script>
+        </select>
+Apr 7 '18 #1
+Subscribe Post Reply
+1  5055 
+gits
+gits
+5,390  Expert Mod 4TB
+basicly you may use both variants - but you would need to call your function - given it does what you want it to do - in the onload-event of your page. by using this event you make sure the DOM is already processed and you can safly use getElementById to get a reference to your select-element.

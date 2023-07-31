@@ -1,0 +1,29 @@
+sqliteform.html
+<html>
+
+<title>
+SQLite Example
+</title>
+
+<body>
+        <FORM ACTION="/create" METHOD=POST>
+        Name:   <input type="text" name="name">
+        Marks:  <input type="text" name="marks">
+                <input type="submit" value="Add" name="Submit"/>
+        </FORM>
+</body>
+
+</html>
+success.html
+<html>
+<title>
+Success
+</title>
+<body>
+Record added successfully!!
+<br /><br />
+<FORM action="/show" METHOD="GET">
+<input type="submit" value="Show Records" name="Submit"/>
+</FORM>
+</body>
+</html>
